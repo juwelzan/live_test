@@ -19,46 +19,48 @@ class HomeScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.only(
-          left: 8.w,
-          right: 8.w,
-          top: 20.h,
-          bottom: 100.h,
-        ),
-        itemCount: controller.allData.value.length,
-        itemBuilder: (_, index) {
-          final data = controller.allData.value[index];
-          return Card(
-            color: Color(0xff450693),
-            child: ListTile(
-              title: Text(data.title),
-              subtitle: Text(data.description),
-              trailing: Text(
-                data.calories.toString(),
-                style: TextStyle(color: Colors.white54),
+      body: Obx(() {
+        return ListView.builder(
+          padding: EdgeInsets.only(
+            left: 8.w,
+            right: 8.w,
+            top: 20.h,
+            bottom: 100.h,
+          ),
+          itemCount: controller.allData.value.length,
+          itemBuilder: (_, index) {
+            final data = controller.allData.value[index];
+            return Card(
+              color: Color(0xff450693),
+              child: ListTile(
+                title: Text(data.title),
+                subtitle: Text(data.description),
+                trailing: Text(
+                  data.calories.toString(),
+                  style: TextStyle(color: Colors.white54),
+                ),
+                titleTextStyle: TextStyle(
+                  color: Color(0xffffffff),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.sp,
+                ),
+                subtitleTextStyle: TextStyle(
+                  color: const Color.fromARGB(255, 223, 223, 223),
+                  fontSize: 10.sp,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductView(data: data),
+                    ),
+                  );
+                },
               ),
-              titleTextStyle: TextStyle(
-                color: Color(0xffffffff),
-                fontWeight: FontWeight.bold,
-                fontSize: 15.sp,
-              ),
-              subtitleTextStyle: TextStyle(
-                color: const Color.fromARGB(255, 223, 223, 223),
-                fontSize: 10.sp,
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProductView(data: data),
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
+            );
+          },
+        );
+      }),
     );
   }
 }
