@@ -16,6 +16,9 @@ class Controller extends GetxController {
   Future<void> fatchData() async {
     List<dynamic> data = await JsonService.lodeJson();
 
-    allData.value = data.map((p) => Model.fromJson(p)).toList();
+    await Future.delayed(
+      Duration(seconds: 1),
+      () => allData.value = data.map((p) => Model.fromJson(p)).toList(),
+    );
   }
 }
