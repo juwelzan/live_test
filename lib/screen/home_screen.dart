@@ -10,7 +10,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home")),
+      appBar: AppBar(
+        title: Text("Home"),
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 30.sp,
+          color: Color(0xff450693),
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: ListView.builder(
         padding: EdgeInsets.only(
           left: 8.w,
@@ -33,10 +41,11 @@ class HomeScreen extends StatelessWidget {
               titleTextStyle: TextStyle(
                 color: Color(0xffffffff),
                 fontWeight: FontWeight.bold,
+                fontSize: 15.sp,
               ),
               subtitleTextStyle: TextStyle(
                 color: const Color.fromARGB(255, 223, 223, 223),
-                fontSize: 12.sp,
+                fontSize: 10.sp,
               ),
               onTap: () {
                 Navigator.push(
